@@ -1,0 +1,109 @@
+
+Course[] courses = new Course[5];
+
+courses[0] = new Course("CENG211", "Object-Oriented Programming", 4);
+courses[1] = new Course("EE205", "Electric Circuit Analysis", 4);
+courses[2] = new Course("EE243", "Digital Logic Design", 3);
+courses[3] = new Course("FE201", "Engineering Ethics", 2);
+courses[4] = new Course("MATH211", "Lineer Algebra", 3);
+
+
+
+foreach (Course course in courses)
+{
+    course.Info();
+
+}
+
+int sum = 0;
+
+for(int i = 0; i < courses.Length; i++)
+{
+    sum += courses[i].Credits;
+}
+
+Console.WriteLine($"\nSum of Credits: {sum}");
+
+
+foreach (Course course in courses)
+{
+    course.Sorted();
+
+
+}
+
+
+class Course
+{
+    public static string[] arr = new string[5];
+    public static int count = 0;
+    public string Code { get; init; }
+    private string name;
+    private int credits;
+
+    private string Name { get; set; }
+
+
+    public int Credits
+    {
+        get { return credits; }
+        set
+        {
+            if (credits > 1 && credits < 10)
+            {
+                Console.WriteLine("Error!!!");
+            }
+            else
+            {
+                credits = value;
+            }
+
+
+        }
+    }
+
+    public Course(string code, string name, int credits)
+    {
+        Code = code;
+        Name = name;
+        Credits = credits;
+
+
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"{Code} {Name} ({Credits} cr)");
+    }
+
+    public void Sorted()
+    {
+        
+
+        if ( count < 5)
+        {
+            arr[count] = Name;
+
+            count++;
+        }
+
+        if (count == 5)
+        {
+
+            Array.Sort(arr);
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+        }
+        
+    
+        
+    }
+
+   
+
+
+
+}
