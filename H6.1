@@ -1,0 +1,95 @@
+Book[] books = new Book[3];
+
+books[0] = new Book("Suç ve Ceza", "Dostoyevski", 687);
+books[1] = new Book("Witcher", "Andrej Sapkowski", 521);
+books[2] = new Book("Dirilis", "Tolstoy",715);
+
+foreach (Book book in books)
+{
+    book.Info();
+}
+
+
+Book max = books[0];
+
+for (int i = 1; i < books.Length; i++)
+{
+    
+    if (books[i].Pages > max.Pages)
+    {
+        max = books[i];
+    }
+}
+
+
+Console.WriteLine($"Book that have most pages: {max.Title} {max.Pages} pages.");
+
+class Book
+{
+
+    private string title;
+
+    public string Title
+    {
+        get { return title; }
+        set { title = value; }
+
+
+    }
+
+    private string author;
+
+    public string Author
+    {
+        get { return author; }
+        set { author = value; }
+    }
+
+
+    private int pages;
+   
+
+    public int Pages
+    {
+        get { return pages; }
+        set
+        {
+            if (pages < 0)
+            {
+                Console.WriteLine("Pages cannot be less than zero!");
+
+            }
+            else
+            {
+                pages = value;
+            }
+
+
+        }
+    }
+
+    public Book(string title, string author, int pages)
+    {
+
+
+        Title = title;
+        Author = author;
+        Pages= pages;
+
+
+        
+
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"{Title} by {Author} , {Pages} pages");
+
+    }
+
+   
+
+    
+
+
+}
